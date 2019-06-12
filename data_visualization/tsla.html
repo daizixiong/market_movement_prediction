@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>aapl Stock Market Analysis</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- Custom styles for this template -->
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css" media="screen">
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        margin-bottom: 80px;
+    }
+
+    .nav_container {
+        margin-top: 20px;
+        height: 200px;
+        margin-bottom: 280px;
+    }
+
+    .nav_container>.jumbotron>p>a.btn {
+        margin-bottom: 10px;
+    }
+
+    #main {
+        width: 80%;
+        margin: 0 auto;
+        height: 600px;
+        margin-top: 100px;
+    }
+
+    #profit_chart {
+        width: 80%;
+        margin: 0 auto;
+        height: 600px;
+    }
+
+    #bar_mark {
+        width: 80%;
+        margin: 0 auto;
+        height: 600px;
+    }
+
+    #time_series {
+        width: 80%;
+        margin: 0 auto;
+        height: 600px;
+    }
+    #market_chart{
+        width: 80%;
+        margin: 0 auto;
+        height: 600px;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        height: 60px;
+        background-color: #f5f5f5;
+        margin-top: 100px;
+    }
+
+    .footer_container {
+        width: auto;
+        max-width: 680px;
+        padding: 0 15px;
+    }
+
+    .footer_container .text-muted {
+        margin: 20px 0;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top" id="top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Market Movement Prediction</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container nav_container">
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>Market Movement Prediction</h1>
+            <p>Predict price movement of 10 NASDAQ-listed companies using tweet sentiment analysis</p>
+            <p>
+                <a class="btn btn-lg btn-success" href="./index.html" role="button">Overivew</a>
+                <a class="btn btn-lg btn-success" href="./aapl.html" role="button">aapl</a>
+                <a class="btn btn-lg btn-success" href="./amzn.html" role="button">amzn</a>
+                <a class="btn btn-lg btn-success" href="./googl.html" role="button">googl</a>
+                <a class="btn btn-lg btn-success" href="./gild.html" role="button">gild</a>
+                <a class="btn btn-lg btn-success" href="./sbux.html" role="button">sbux</a>
+                <a class="btn btn-lg btn-success" href="./goog.html" role="button">goog</a>
+                <a class="btn btn-lg btn-success" href="./nflx.html" role="button">nflx</a>
+                <a class="btn btn-lg btn-success" href="./msft.html" role="button">msft</a>
+                <a class="btn btn-lg btn-warning" href="./tsla.html" role="button">tsla</a>
+                <a class="btn btn-lg btn-success" href="./fb.html" role="button">fb</a>
+            </p>
+        </div>
+    </div> <!-- /container -->
+    <div class="container">
+        <!-- Main component for a primary marketing message or call to action -->
+        <!-- <div class="jumbotron">
+            <h1>Market Movement Prediction</h1>
+            <p>Predict price movement of 10 NASDAQ-listed companies using tweet sentiment analysis</p>
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+            <p>
+                <a class="btn btn-lg btn-success" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+            </p>
+        </div> -->
+        <div id="bar_mark"></div>
+        <div id="time_series"></div>
+        <div id="main"></div>
+        <div id="profit_chart"></div>
+        <!-- <div id="market_chart"></div> -->
+        
+        
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../node_modules/echarts/dist/echarts.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+
+    var option = {
+        title: {
+            x: 'center',
+            text: 'Market Sentiment & Predictiont',
+            subtext: '$TSLA'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        toolbox: {
+            show: false,
+            feature: {
+                dataView: { show: true, readOnly: false },
+                restore: { show: true },
+                saveAsImage: { show: true },
+                magicType: { show: true, type: ['line', 'bar'] }
+            }
+        },
+        calculable: true,
+        grid: {
+            borderWidth: 0,
+            y: 80,
+            y2: 60
+        },
+        xAxis: [{
+            type: 'category',
+            show: true,
+            // data: ['Line', 'Bar', 'Scatter', 'K', 'Pie', 'Radar', 'Chord', 'Force', 'Map', 'Gauge', 'Funnel']
+            // X 轴坐标
+            data: ["1/10/2018","2/10/2018","3/10/2018","4/10/2018","5/10/2018",
+                   "8/10/2018","9/10/2018","10/10/2018","11/10/2018","12/10/2018",
+                   "15/10/2018","16/10/2018","17/10/2018","18/10/2018","19/10/2018",
+                   "22/10/2018","23/10/2018","24/10/2018","25/10/2018","26/10/2018",
+                   "29/10/2018","30/10/2018","31/10/2018"],
+            axisLabel: {
+                interval: 0,
+                rotate: 45
+            }
+        }],
+        yAxis: [{
+            type: 'value',
+            show: true
+        }],
+        series: [{
+            name: 'Stock price movement',
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        var colorList = ["#9BCA63","#9BCA63","#C1232B","#C1232B","#9BCA63",
+                                         "#9BCA63","#C1232B","#9BCA63","#C1232B","#9BCA63",
+                                         "#C1232B","#9BCA63","#9BCA63","#C1232B","#9BCA63",
+                                         "#9BCA63","#C1232B","#9BCA63","#9BCA63","#9BCA63",
+                                         "#C1232B","#9BCA63","#9BCA63"
+                        ];
+                        return colorList[params.dataIndex]
+                    },
+
+                    label: {
+                        show: false,
+                        position: 'bottom',
+                        formatter: '{c}'
+                    }
+                }
+            },
+            data: [0.33  ,-0.45  ,0.65  ,-0.20  ,0.24  ,-0.44  ,0.83  ,
+                   -0.19  ,0.14  ,-0.43  ,0.21  ,0.72  ,0.35  ,0.33  ,
+                   -0.24  ,0.32  ,0.61  ,-0.20  ,0.27  ,-0.13  ,-0.60  ,0.44  ,-0.10]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    </script>
+    <script type="text/javascript">
+    var profit_chart = echarts.init(document.getElementById('profit_chart'));
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+    var profit_chart_option = {
+        color: ['#5793f3', '#d14a61', '#675bba'],
+        title: {
+            x: 'center',
+            text: 'Simulated Trade',
+            subtext: '$TSLA'
+        },
+        legend: {
+            x: "right",
+            data: ['Market Price', 'Simulated Trade']
+        },
+        // grid: {
+        //     top: 70,
+        //     bottom: 50
+        // },
+        xAxis: [{
+            type: 'category',
+            show: true,
+            data: ["1/10/2018","2/10/2018","3/10/2018","4/10/2018","5/10/2018",
+                   "8/10/2018","9/10/2018","10/10/2018","11/10/2018","12/10/2018",
+                   "15/10/2018","16/10/2018","17/10/2018","18/10/2018","19/10/2018",
+                   "22/10/2018","23/10/2018","24/10/2018","25/10/2018","26/10/2018",
+                   "29/10/2018","30/10/2018","31/10/2018"
+            ]
+        }],
+        yAxis: [{
+            type: 'value',
+            show: true,
+            // 设定y轴最小值
+            min: 210
+        }],
+        series: [{
+                name: 'Market Price',
+                type: 'line',
+                smooth: false,
+                data: [306.24 ,307.99 ,298.09 ,285.84 ,267.44 ,258.38 ,260.03 ,
+                       256.64 ,255.64 ,257.00 ,258.91 ,269.81 ,274.25 ,267.00 ,
+                       261.58 ,257.22 ,280.01 ,295.09 ,311.01 ,323.27 ,336.83 ,
+                       330.08 ,335.55 ]
+            },
+            {
+                name: 'Simulated Trade',
+                type: 'line',
+                smooth: false,
+                data: [306.24 ,318.86 ,327.82 ,314.31 ,299.77 ,315.59 ,324.93 ,
+                       315.44 ,321.93 ,319.19 ,318.54 ,331.59 ,344.06 ,337.19 ,
+                       327.87 ,328.21 ,365.86 ,350.61 ,353.22 ,379.17 ,376.23 ,377.96 ,383.39 
+                ]
+            }
+        ]
+    };
+
+    profit_chart.setOption(profit_chart_option)
+    </script>
+    <script type="text/javascript">
+    var bar_mark_chart = echarts.init(document.getElementById("bar_mark"));
+
+    var bar_option = {
+        title: {
+            x: 'center',
+            text: 'Ensemble Vs Individual Classifier',
+            subtext: '$TSLA'
+        },
+        color: ['#3398DB'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            // X轴坐标
+            data: ["KNN", "SVM", "NB", "DT", "RF", "LR", "Ensemble"],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }],
+        yAxis: [{
+            type: 'value'
+        }],
+        series: [{
+            name: 'Model accuracy',
+            type: 'bar',
+            barWidth: '30%',
+            // data: [10, 52, 200, 334, 390, 330, 220],
+            // Y轴数据
+            data: [0.51 ,0.61 ,0.61 ,0.62 ,0.61 ,0.61 ,0.65],
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        var colorList = [
+                            '#26C0C0', '#26C0C0', '#26C0C0', '#26C0C0', '#26C0C0', '#26C0C0', '#F0805A', '#9BCA63',
+                        ];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+        }]
+    };
+
+    bar_mark_chart.setOption(bar_option)
+    </script>
+    <script type="text/javascript">
+    var time_series_bar = echarts.init(document.getElementById("time_series"));
+
+    var time_series_bar_option = {
+        title: {
+            x: 'center',
+            text: 'Time series(Ensemble Method)',
+            subtext: '$TSLA'
+        },
+        color: ['#3398DB'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            // X轴坐标
+            data: ["Time Lag(0)","Time Lag(1)","Time Lag(2)","Time Lag(3)"],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }],
+        yAxis: [{
+            type: 'value'
+        }],
+        series: [{
+            name: 'Model accuracy',
+            type: 'bar',
+            barWidth: '25%',
+            // data: [10, 52, 200, 334, 390, 330, 220],
+            // Y轴数据
+            data: [0.59  ,0.61  ,0.59  ,0.57 ],
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        var colorList = [
+                            '#26C0C0', '#26C0C0', '#26C0C0', '#26C0C0', '#26C0C0', '#26C0C0', '#F0805A', '#9BCA63',
+                        ];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+        }]
+    };
+
+    time_series_bar.setOption(time_series_bar_option)
+    </script>
+    <script type="text/javascript">
+    var market_chart_bar = echarts.init(document.getElementById("market_chart"));
+
+    var market_chart_bar_option = {
+        title: {
+            x: 'center',
+            text: 'Precision',
+            subtext: '$TSLA'
+        },
+        color: ['#3398DB'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            // X轴坐标
+            data: ["Market Up","Market Down"],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }],
+        yAxis: [{
+            type: 'value'
+        }],
+        series: [{
+            name: 'Model accuracy',
+            type: 'bar',
+            barWidth: '25%',
+            // data: [10, 52, 200, 334, 390, 330, 220],
+            // Y轴数据
+            data: [0.71,0.64],
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        var colorList = [
+                            '#F0805A','#26C0C0',  '#9BCA63',
+                        ];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+        }]
+    };
+
+    market_chart_bar.setOption(market_chart_bar_option)
+    </script>
+</body>
+
+</html>

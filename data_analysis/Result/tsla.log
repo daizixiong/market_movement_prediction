@@ -1,0 +1,330 @@
+Testing these models:  ['svm', 'navie_bayes', 'random_forest', 'logistic_regression', 'k_nearest_neighbors', 'decision_tree']
+******************************************************************************************
+Using svm model to train and predict the data
+================================================================================
+testing epoch  1
+Classification report for classifier svm:
+             precision    recall  f1-score   support
+
+         -1       0.50      1.00      0.67         4
+          1       0.00      0.00      0.00         4
+
+avg / total       0.25      0.50      0.33         8
+
+
+model accuracy:  0.5
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  2
+Classification report for classifier svm:
+             precision    recall  f1-score   support
+
+         -1       0.50      1.00      0.67         4
+          1       0.00      0.00      0.00         4
+
+avg / total       0.25      0.50      0.33         8
+
+
+model accuracy:  0.5
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  3
+Classification report for classifier svm:
+             precision    recall  f1-score   support
+
+         -1       0.50      1.00      0.67         4
+          1       0.00      0.00      0.00         4
+
+avg / total       0.25      0.50      0.33         8
+
+
+model accuracy:  0.5
+--------------------------------------------------------------------------------
+Using navie_bayes model to train and predict the data
+================================================================================
+testing epoch  1
+Classification report for classifier navie_bayes:
+             precision    recall  f1-score   support
+
+         -1       0.40      0.50      0.44         4
+          1       0.33      0.25      0.29         4
+
+avg / total       0.37      0.38      0.37         8
+
+
+model accuracy:  0.375
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  2
+Classification report for classifier navie_bayes:
+             precision    recall  f1-score   support
+
+         -1       0.40      0.50      0.44         4
+          1       0.33      0.25      0.29         4
+
+avg / total       0.37      0.38      0.37         8
+
+
+model accuracy:  0.375
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  3
+Classification report for classifier navie_bayes:
+             precision    recall  f1-score   support
+
+         -1       0.40      0.50      0.44         4
+          1       0.33      0.25      0.29         4
+
+avg / total       0.37      0.38      0.37         8
+
+
+model accuracy:  0.375
+--------------------------------------------------------------------------------
+Using random_forest model to train and predict the data
+================================================================================
+testing epoch  1
+Classification report for classifier random_forest:
+             precision    recall  f1-score   support
+
+         -1       0.60      0.75      0.67         4
+          1       0.67      0.50      0.57         4
+
+avg / total       0.63      0.62      0.62         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  2
+Classification report for classifier random_forest:
+             precision    recall  f1-score   support
+
+         -1       0.50      0.75      0.60         4
+          1       0.50      0.25      0.33         4
+
+avg / total       0.50      0.50      0.47         8
+
+
+model accuracy:  0.5
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  3
+Classification report for classifier random_forest:
+             precision    recall  f1-score   support
+
+         -1       0.43      0.75      0.55         4
+          1       0.00      0.00      0.00         4
+
+avg / total       0.21      0.38      0.27         8
+
+
+model accuracy:  0.375
+--------------------------------------------------------------------------------
+Using logistic_regression model to train and predict the data
+================================================================================
+testing epoch  1
+Classification report for classifier logistic_regression:
+             precision    recall  f1-score   support
+
+         -1       0.57      1.00      0.73         4
+          1       1.00      0.25      0.40         4
+
+avg / total       0.79      0.62      0.56         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  2
+Classification report for classifier logistic_regression:
+             precision    recall  f1-score   support
+
+         -1       0.57      1.00      0.73         4
+          1       1.00      0.25      0.40         4
+
+avg / total       0.79      0.62      0.56         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  3
+Classification report for classifier logistic_regression:
+             precision    recall  f1-score   support
+
+         -1       0.57      1.00      0.73         4
+          1       1.00      0.25      0.40         4
+
+avg / total       0.79      0.62      0.56         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+Using k_nearest_neighbors model to train and predict the data
+================================================================================
+testing epoch  1
+Classification report for classifier k_nearest_neighbors:
+             precision    recall  f1-score   support
+
+         -1       0.60      0.75      0.67         4
+          1       0.67      0.50      0.57         4
+
+avg / total       0.63      0.62      0.62         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  2
+Classification report for classifier k_nearest_neighbors:
+             precision    recall  f1-score   support
+
+         -1       0.60      0.75      0.67         4
+          1       0.67      0.50      0.57         4
+
+avg / total       0.63      0.62      0.62         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  3
+Classification report for classifier k_nearest_neighbors:
+             precision    recall  f1-score   support
+
+         -1       0.60      0.75      0.67         4
+          1       0.67      0.50      0.57         4
+
+avg / total       0.63      0.62      0.62         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+Using decision_tree model to train and predict the data
+================================================================================
+testing epoch  1
+Classification report for classifier decision_tree:
+             precision    recall  f1-score   support
+
+         -1       0.50      0.50      0.50         4
+          1       0.50      0.50      0.50         4
+
+avg / total       0.50      0.50      0.50         8
+
+
+model accuracy:  0.5
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  2
+Classification report for classifier decision_tree:
+             precision    recall  f1-score   support
+
+         -1       0.50      0.50      0.50         4
+          1       0.50      0.50      0.50         4
+
+avg / total       0.50      0.50      0.50         8
+
+
+model accuracy:  0.5
+--------------------------------------------------------------------------------
+================================================================================
+testing epoch  3
+Classification report for classifier decision_tree:
+             precision    recall  f1-score   support
+
+         -1       0.50      0.50      0.50         4
+          1       0.50      0.50      0.50         4
+
+avg / total       0.50      0.50      0.50         8
+
+
+model accuracy:  0.5
+--------------------------------------------------------------------------------
+Testing these models:  ['navie_bayes', 'random_forest', 'logistic_regression', 'k_nearest_neighbors', 'decision_tree']
+Using ensemble techniques to predict the stock price movement.
+******************************************************************************************
+ensemble epoch  1
+================================================================================
+Classification report for classifier ensemble test accuracy: :
+             precision    recall  f1-score   support
+
+         -1       0.57      1.00      0.73         4
+          1       1.00      0.25      0.40         4
+
+avg / total       0.79      0.62      0.56         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+ensemble epoch  2
+================================================================================
+Classification report for classifier ensemble test accuracy: :
+             precision    recall  f1-score   support
+
+         -1       0.57      1.00      0.73         4
+          1       1.00      0.25      0.40         4
+
+avg / total       0.79      0.62      0.56         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+ensemble epoch  3
+================================================================================
+Classification report for classifier ensemble test accuracy: :
+             precision    recall  f1-score   support
+
+         -1       0.57      1.00      0.73         4
+          1       1.00      0.25      0.40         4
+
+avg / total       0.79      0.62      0.56         8
+
+
+model accuracy:  0.625
+--------------------------------------------------------------------------------
+Testing these models:  ['svm', 'navie_bayes', 'random_forest', 'logistic_regression', 'k_nearest_neighbors', 'decision_tree']
+Using k-Fold Cross-Validation techniques to predict the stock price movement.
+
+********************************************************************************
+Using svm model to train and predict the data
+================================================================================
+cv_scores list:  [0.5        0.5        0.5        0.5        0.5        0.5
+ 0.5        0.5        0.5        0.66666667]
+cv_scores mean: 0.5166666666666667
+--------------------------------------------------------------------------------
+Using navie_bayes model to train and predict the data
+================================================================================
+cv_scores list:  [0.5        0.25       0.5        0.75       0.75       0.5
+ 0.75       0.75       0.75       0.66666667]
+cv_scores mean: 0.6166666666666667
+--------------------------------------------------------------------------------
+Using random_forest model to train and predict the data
+================================================================================
+cv_scores list:  [0.5        0.75       0.25       0.75       0.75       0.5
+ 0.75       0.75       0.5        0.66666667]
+cv_scores mean: 0.6166666666666667
+--------------------------------------------------------------------------------
+Using logistic_regression model to train and predict the data
+================================================================================
+cv_scores list:  [1.         0.25       0.5        0.75       0.5        0.75
+ 0.5        0.75       0.5        0.66666667]
+cv_scores mean: 0.6166666666666667
+--------------------------------------------------------------------------------
+Using k_nearest_neighbors model to train and predict the data
+================================================================================
+cv_scores list:  [0.75       0.5        0.5        0.75       0.5        0.75
+ 0.5        0.5        0.75       0.66666667]
+cv_scores mean: 0.6166666666666667
+--------------------------------------------------------------------------------
+Using decision_tree model to train and predict the data
+================================================================================
+cv_scores list:  [0.5        0.75       0.25       0.75       0.5        0.5
+ 1.         0.75       0.5        0.66666667]
+cv_scores mean: 0.6166666666666667
+--------------------------------------------------------------------------------
+Testing these models:  ['navie_bayes', 'random_forest', 'logistic_regression', 'k_nearest_neighbors', 'decision_tree']
+Using ensemble techniques to predict the stock price movement.
+********************************************************************************
+cv_scores list:  [0.75, 0.5, 0.5, 1.0, 0.25, 0.5, 0.5, 0.5, 0.5, 0.6666666666666666]
+cv_scores mean: 0.6166666666666667
+--------------------------------------------------------------------------------
